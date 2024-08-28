@@ -3,23 +3,23 @@ gateways:
     state_connection:
       type: postgres
       host: localhost
-      user: postgres
-      password: postgres
+      user: sql_mesh_state_user
+      password: sql_mesh_state_pwd
       port: 5432
       database: sql_mesh_state
     connection:
       type: postgres
       host: localhost
-      user: postgres
-      password: postgres
+      user: sql_mesh_dwh_user
+      password: sql_mesh_dwh_pwd
       port: 5432
       database: sql_mesh_dwh
   sample_data:
     state_connection:
       type: postgres
       host: localhost
-      user: postgres
-      password: postgres
+      user: sql_mesh_state_user
+      password: sql_mesh_state_pwd
       port: 5432
       database: sql_mesh_state
     connection:
