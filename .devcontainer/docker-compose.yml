@@ -21,12 +21,14 @@ services:
   sql_mesh_db:
     image: postgres:13
     restart: unless-stopped
-    volumes:
-      - sql_mesh_db-data:/var/lib/postgresql/data
-      - ./init-postgres-multidb.sh:/docker-entrypoint-initdb.d/init-postgres-multidb.sh
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    volumes:
+      - sql_mesh_db-data:/var/lib/postgresql/data
+      - ./init-postgres-multidb.sh:/docker-entrypoint-initdb.d/init-postgres-multidb.sh
+    ports:
+      - "5432:5432"    
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)

@@ -34,7 +34,10 @@
 	// "forwardPorts": [5000, 5432],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "./.devcontainer/init-dev-environment.sh"
+	"postCreateCommand": "./.devcontainer/init-dev-environment.sh",
+	"features": {
+		"ghcr.io/robbert229/devcontainer-features/postgresql-client:1": {}
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},
