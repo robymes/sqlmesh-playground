@@ -1,6 +1,6 @@
 #!/bin/bash
 
 python -m venv .env
-.\.env\Scripts\activate
+source .env/bin/activate
 pip install sqlmesh
 pip install "sqlmesh[duckdb, postgres, motherduck, web]"
