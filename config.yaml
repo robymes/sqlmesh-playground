@@ -1,16 +1,27 @@
 gateways:
   dwh:
     state_connection:
-      type: duckdb
-      database: state.db
+      type: postgres
+      host: localhost
+      user: postgres
+      password: postgres
+      port: 5432
+      database: sql_mesh_state
     connection:
-      type: motherduck
-      database: sql_mesh_playground
-      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJvYnltZXNAZ21haWwuY29tIiwic2Vzc2lvbiI6InJvYnltZXMuZ21haWwuY29tIiwicGF0IjoiLXlnd3RNTmc4T0dnMmVnb24xVXdzWUZVQjUzRWZHSVJpT21EMTRmTFE2VSIsInVzZXJJZCI6IjAyMDJjMzA2LTljNWMtNGMzYS1iZGVlLTdlNWFlZTZkY2M0ZSIsImlzcyI6Im1kX3BhdCIsImlhdCI6MTcyNDQwNzkxOH0.vNEM1o48K0R78zC7xeCrQuGcJpCoyB6UG-hJL7fb7VI
+      type: postgres
+      host: localhost
+      user: postgres
+      password: postgres
+      port: 5432
+      database: sql_mesh_dwh
   sample_data:
     state_connection:
-      type: duckdb
-      database: state.db
+      type: postgres
+      host: localhost
+      user: postgres
+      password: postgres
+      port: 5432
+      database: sql_mesh_state
     connection:
       type: motherduck
       database: sample_data
