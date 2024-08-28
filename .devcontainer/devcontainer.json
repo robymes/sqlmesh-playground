@@ -8,23 +8,23 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"Evidence.sqltools-duckdb-driver",
-				"donjayamanne.githistory",
-				"mhutchie.git-graph",
-				"mtxr.sqltools",
 				"redhat.vscode-yaml",
+				"phu1237.vs-browser",
+				"mechatroner.rainbow-csv",
+				"mhutchie.git-graph",
+				"donjayamanne.githistory",
 				"ms-python.python",
-				"ms-python.debugpy",
-				"ms-python.vscode-pylance",
-				"Phu1237.vs-browser",
 				"ms-toolsai.jupyter",
-				"ms-toolsai.vscode-jupyter-cell-tags",
+				"ms-toolsai.jupyter-keymap",
 				"ms-toolsai.jupyter-renderers",
 				"ms-toolsai.vscode-jupyter-slideshow",
-				"mtxr.sqltools-driver-pg"
+				"ms-toolsai.vscode-jupyter-cell-tags",        
+				"mtxr.sqltools",
+				"mtxr.sqltools-driver-pg",
+				"evidence.sqltools-duckdb-driver"
 			]
 		}
-	}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
@@ -34,7 +34,7 @@
 	// "forwardPorts": [5000, 5432],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "pip install --user -r requirements.txt",
+	"postCreateCommand": "./.devcontainer/init-dev-environment.sh"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
