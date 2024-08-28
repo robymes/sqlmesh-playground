@@ -19,20 +19,20 @@ services:
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   sql_mesh_state:
-    image: postgres:latest
+    image: postgres:13
     restart: unless-stopped
     volumes:
-      - sql_mesh_state-data:/var/lib/postgresql/data/sql_mesh_state
+      - sql_mesh_state-data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: sql_mesh_state
       POSTGRES_PASSWORD: postgres
 
   sql_mesh_dwh:
-    image: postgres:latest
+    image: postgres:13
     restart: unless-stopped
     volumes:
-      - sql_mesh_dwh-data:/var/lib/postgresql/data/sql_mesh_dwh
+      - sql_mesh_dwh-data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: sql_mesh_dwh
