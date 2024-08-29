@@ -15,8 +15,20 @@ SELECT
   passenger_count,
   total_amount,
   trip_distance,
-  payment_type
+  payment_type,
+  ROUND(
+    (
+      EXTRACT(EPOCH FROM (
+        tpep_dropoff_datetime - tpep_pickup_datetime
+      )) / 3600.0
+    )::DECIMAL(18, 3),
+    2
+  ) AS total_hours
 FROM playground.taxi_external
 WHERE
-  (passenger_count NOTNULL) AND
-  (tpep_pickup_datetime BETWEEN @start_date AND @end_date)
+  (
+    NOT passenger_count IS NULL
+  )
+  AND (
+    tpep_pickup_datetime BETWEEN @start_date AND @end_date
+  )
