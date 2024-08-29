@@ -13,25 +13,46 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:sql_mesh_db
+    network_mode: service:sql_mesh_state
 
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
-  sql_mesh_db:
+  sql_mesh_state:
     image: postgres:latest
     restart: unless-stopped
     environment:
+      POSTGRES_DB: sql_mesh_state
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - sql_mesh_db-data:/var/lib/postgresql/data
-      - ./init-postgres-multidb.sh:/docker-entrypoint-initdb.d/init-postgres-multidb.sh
+      - sql_mesh_state_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"    
+      - "5432:5432"
+    networks:
+      - postgres_network
+
+  sql_mesh_dwh:
+    image: postgres:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sql_mesh_dwh
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - sql_mesh_dwh_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - postgres_network
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
+networks:
+  postgres_network:
+    driver: bridge
+
 volumes:
-  sql_mesh_db-data:
+  sql_mesh_state_data:
+  sql_mesh_dwh_data:

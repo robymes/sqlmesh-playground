@@ -1,15 +1,5 @@
 {
-    "sqltools.connections": [
-        {
-            "previewLimit": 50,
-            "server": "localhost",
-            "port": 5432,
-            "driver": "PostgreSQL",
-            "name": "default",
-            "database": "postgres",
-            "username": "postgres",
-            "password": "postgres"
-        },
+    "sqltools.connections": [        
         {
             "previewLimit": 50,
             "server": "localhost",
@@ -17,18 +7,18 @@
             "driver": "PostgreSQL",
             "name": "SQLMesh State",
             "database": "sql_mesh_state",
-            "username": "sql_mesh_state_user",
-            "password": "sql_mesh_state_pwd"
+            "username": "postgres",
+            "password": "postgres"
         },
         {
             "previewLimit": 50,
             "server": "localhost",
-            "port": 5432,
+            "port": 5433,
             "driver": "PostgreSQL",
             "name": "SQLMesh DWH",
             "database": "sql_mesh_dwh",
-            "username": "sql_mesh_dwh_user",
-            "password": "sql_mesh_dwh_pwd"
+            "username": "postgres",
+            "password": "postgres"
         }
     ]
 }
