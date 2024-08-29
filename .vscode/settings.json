@@ -2,7 +2,7 @@
     "sqltools.connections": [        
         {
             "previewLimit": 50,
-            "server": "localhost",
+            "server": "sql_mesh_state",
             "port": 5432,
             "driver": "PostgreSQL",
             "name": "SQLMesh State",
@@ -12,8 +12,8 @@
         },
         {
             "previewLimit": 50,
-            "server": "localhost",
-            "port": 5433,
+            "server": "sql_mesh_dwh",
+            "port": 5432,
             "driver": "PostgreSQL",
             "name": "SQLMesh DWH",
             "database": "sql_mesh_dwh",
