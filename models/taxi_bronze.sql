@@ -3,7 +3,7 @@ MODEL (
   kind INCREMENTAL_BY_TIME_RANGE (
     time_column tpep_pickup_datetime
   ),
-  start '2020-01-01',
+  start '2022-11-03',
   cron '@daily',
   grain (VendorID, tpep_pickup_datetime, tpep_dropoff_datetime)
 );
