@@ -56,7 +56,9 @@ Trovate tutta le informazioni e la documentazione di SQLMesh qui:
 - https://sqlmesh.com/
 - https://sqlmesh.readthedocs.io/en/stable/
 
-Per chi conoscesse DBT è consigliata la lettura di questo articolo: https://www.harness.io/blog/from-dbt-to-sqlmesh.
+Per chi conoscesse DBT è consigliata la lettura di questi articoli:
+- https://www.harness.io/blog/from-dbt-to-sqlmesh
+- https://kestra.io/blogs/2024-02-28-dbt-or-sqlmesh
 
 ### Attivare la CLI dell'ambiente di sviluppo
 Sono necessarie un paio di azioni prima di lavorare nell'ambiente di sviluppo:
