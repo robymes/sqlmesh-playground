@@ -31,7 +31,7 @@ Prima di iniziare, assicurati di avere installato i seguenti software:
    VS Code clonerà il repository, costruirà e avvierà il container, e si connetterà automaticamete allo stesso puntando direttamente al suo file system.  
    Questo processo potrebbe richiedere alcuni minuti la prima volta, per monitorare l'avanzamento del processo aprire la finestra di Output dalla notifica che viene presentata da VS Code (o tramite Ctrl+Shift+U)
 
-5. **Accedi all'amnbiente**
+5. **Accedi all'ambiente**
    Una volta completato il processo, sarai all'interno dell'ambiente di sviluppo containerizzato. L'ambiente è già configurato con Python e SQLMesh, oltre a tutte le estensioni di VS Code che possono essere utili nell'esplorazione del progetto.  
    Inoltre vengono avviati altri due container per le due istanze di PostgreSQL su cui insistono il database di stato di SQLMesh e il DWH di lavoro.
 
@@ -79,10 +79,11 @@ Il progetto VS Code inizalizza ed esegue tre diversi container Docker (trovate t
 #### Filesystem
 La struttura del filesystem del progetto è quella standard suggerita dalla documentazione di SQLMesh, al fine di sperimentare la tecnologia si consiglia di lavorare solo nelle cartelle `models`, `tests`, `audits`.  
 Nelle cartelle `models` e `audits` sono già presenti i file di base che rappresentano la demo:
-- `models/taxi_external.py`: [model di tipo Python](https://sqlmesh.readthedocs.io/en/stable/concepts/models/python_models/) usato come esempio sia per quanto riguarda l'uso di Python che per quanto riguarda l'uso di [model di tipo External](https://sqlmesh.readthedocs.io/en/stable/concepts/models/external_models/)
-- `models/taxi_bronze.sql`: [model di tipo SQL](https://sqlmesh.readthedocs.io/en/stable/concepts/models/sql_models/) usato come primo step di gestione del dato grezzo in cui si selezionano solo alcune colonne senza ulteriori elaborazioni
-- `models/taxi_kpi_gold.sql`: model di tipo SQL usato per applicare alcune trasformazioni al dato al fine di calcolare alcune aggregazioni
-- `audits/assert_taxi_passengers_not_null.sql`: [audit](https://sqlmesh.readthedocs.io/en/stable/concepts/audits/) applicato al model `taxi_kpi_gold.sql`
+- `models/taxi_external.py`: [model di tipo Python](https://sqlmesh.readthedocs.io/en/stable/concepts/models/python_models/) usato come esempio sia per quanto riguarda l'uso di Python che per quanto riguarda l'uso di [model di tipo EXTERNAL](https://sqlmesh.readthedocs.io/en/stable/concepts/models/external_models/)
+- `models/taxi_bronze.sql`: [model di tipo SQL](https://sqlmesh.readthedocs.io/en/stable/concepts/models/sql_models/) e [INCREMENTAL_BY_TIME_RANGE](https://sqlmesh.readthedocs.io/en/stable/concepts/models/model_kinds/#incremental_by_time_range), usato come primo step di gestione del dato grezzo in cui si selezionano solo alcune colonne senza ulteriori elaborazioni 
+- `models/taxi_kpi_gold.sql`: [model di tipo SQL](https://sqlmesh.readthedocs.io/en/stable/concepts/models/sql_models/) e [FULL](https://sqlmesh.readthedocs.io/en/stable/concepts/models/model_kinds/#full), usato per applicare alcune trasformazioni al dato al fine di calcolare alcune aggregazioni
+- `test/test_taxi_bronze.yaml`: [test](https://sqlmesh.readthedocs.io/en/stable/concepts/tests/) applicato al model `taxi_bronze.sql`, per verificare che la configurazione del time range prenda in considerazione solo i record che presentano il corretto valore di timestamp
+- `audits/assert_taxi_passengers_not_null.sql`: [audit](https://sqlmesh.readthedocs.io/en/stable/concepts/audits/) applicato al model `taxi_kpi_gold.sql`, per verificare che uno dei campi di aggregazione non sia NULL
 
 ### Esecuzione di SQLMesh
 La prima volta che viene lanciato il progetto i database sono vuoti, è necessario eseguire SQLMesh per la prima alimentazione del DWH.  
@@ -91,6 +92,7 @@ Da quel momento in poi, se i container non vengono cancellati, bensì solo inter
 Sono disponibili due modalità di lavoro:
 - Lavorare direttamente nella web UI di SQLMesh
 - Lavorare da CLI in VS Code
+
 Si suggerisce di provarle entrambe per familiarizzare con entrambe le modalità.
 
 Per eseguire la prima alimentazione del DWH è necessario eseguire il comando [`sqlmesh plan`](https://sqlmesh.readthedocs.io/en/stable/concepts/plans/), la prima volta ci impiegherà qualche minuto perchè deve scaricare qualche migliaio di record dalla tabella esterna di Motherduck nel cloud.
