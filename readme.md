@@ -1,4 +1,4 @@
-# SQLMesh Playground
+# SQLMesh Playground - questa è una modifica
 Questo repo fornisce un ambiente di sviluppo di prova per SQLMesh che sfrutta VisualStudio Code e la possibilità di lavorare all'intero di un container Docker pre-configurato.
 
 ## Prerequisiti
