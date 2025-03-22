@@ -1,0 +1,5 @@
+python-dotenv==1.0.0
+polars==1.25.2
+duckdb==1.2.1
+sqlmesh==0.167.0
+sqlmesh[postgres,web,llm]
